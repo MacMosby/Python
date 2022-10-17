@@ -1,12 +1,10 @@
 import pandas
 
-data1 = pandas.read_csv("file1.txt", names=["number"]).number
-data2 = pandas.read_csv("file2.txt", names=["number"]).number
+df = pandas.read_csv("nato_phonetic_alphabet.csv")
+alphabet = {row.letter: row.code for (index, row) in df.iterrows()}
+print(alphabet)
 
-data_1 = [int(n) for n in data1]
-data_2 = [int(n) for n in data2]
+word = input("Enter a word: ").upper()
 
-result = [item for item in data_1 if item in data_2]
+result = [alphabet[letter] for letter in word]
 print(result)
-
-
