@@ -1,16 +1,35 @@
-# This is a sample Python script.
+# import csv
+#
+# with open("weather_data.csv") as data_file:
+#     data = csv.reader(data_file)
+#     temperatures = []
+#     for row in data:
+#         if row[1] != "temp":
+#             temperatures.append(int(row[1]))
+#
+#     print(temperatures)
+#
+# data = pandas.read_csv("weather_data.csv")
+#
+# hottest_day = data[data.temp == data.temp.max()]
+# print(hottest_day)
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import pandas
+
+data = pandas.read_csv("2018_Central_Park_Squirrel_Census_-_Squirrel_Data.csv")
+num_of_cinnamons = len(data[data["Primary Fur Color"] == "Cinnamon"])
+num_of_gray = len(data[data["Primary Fur Color"] == "Gray"])
+num_of_blacks = len(data[data["Primary Fur Color"] == "Black"])
+
+print(num_of_gray)
+print(num_of_cinnamons)
+print(num_of_blacks)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+data_dict = {
+    "Fur Color": ["grey", "red", "black"],
+    "Count": [num_of_gray, num_of_cinnamons, num_of_blacks]
+}
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+df = pandas.DataFrame(data_dict)
+df.to_csv("squirrel_count.csv")
