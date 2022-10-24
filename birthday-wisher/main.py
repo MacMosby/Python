@@ -1,28 +1,3 @@
-# import smtplib
-#
-# my_email = "marcrodenbusch.spam@yahoo.com"
-# password = "macrodspam"
-#
-# with smtplib.SMTP("smtp.mail.yahoo.com") as connection:
-#     connection.starttls()
-#     connection.login(user=my_email, password=password)
-#     connection.sendmail(
-#         from_addr=my_email,
-#         to_addrs="mrodenbusch.business@gmail.com",
-#         msg="Subject: Welcome to Python!\n\nHi there!")
-#
-#
-#
-#
-# import datetime as dt
-#
-# now = dt.datetime.now()
-# date_of_birth = dt.datetime(year=1989, month=7, day=19)
-# print(date_of_birth)
-#
-#
-#
-
 import datetime as dt
 import random
 import smtplib
@@ -32,8 +7,8 @@ import pandas
 
 # 1. Update the birthdays.csv
 data = pandas.read_csv("birthdays.csv")
-bday_dict = data.to_dict(orient="records")
-print(bday_dict)
+birthday_dict = data.to_dict(orient="records")
+print(birthday_dict)
 
 
 # 2. Check if today matches a birthday in the birthdays.csv
@@ -42,7 +17,7 @@ year_today = now.year
 month_today = now.month
 day_today = now.day
 
-for person in bday_dict:
+for person in birthday_dict:
     year = person["year"]
     month = person["month"]
     day = person["day"]
@@ -60,12 +35,19 @@ for person in bday_dict:
 
 # 4. Send the letter generated in step 3 to that person's email address.
 
-        connection = smtplib.SMTP("smtp.gmail.com")
-        MY_EMAIL = "marcrodenbusch@gmail.com"
-        recipient_email = person["email"]
-        print(recipient_email)
+        MY_EMAIL = "mrodenbusch.business@gmail.com"
 
-        connection.sendmail(from_addr=MY_EMAIL, to_addrs=recipient_email, msg=f"HAPPY BIRTHDAY!!!\n\n{final_mail}")
+        with smtplib.SMTP("smtp.gmail.com") as connection:
+            connection.starttls()
+            connection.login(user=MY_EMAIL, password="gehtdichnichtsan")
+
+            recipient_email = person["email"]
+            print(recipient_email)
+
+            connection.sendmail(
+                from_addr=MY_EMAIL,
+                to_addrs=recipient_email,
+                msg=f"Subject:HAPPY BIRTHDAY!!!\n\n{final_mail}")
 
 
 
