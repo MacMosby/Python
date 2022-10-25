@@ -3,7 +3,7 @@ import datetime as dt
 import math
 from twilio.rest import Client
 
-TSLA_API_key = "SBVHVP3NZ19I83CR"
+TSLA_API_key = "use your own api key"
 STOCK = "TSLA"
 COMPANY_NAME = "Tesla Inc"
 
@@ -40,7 +40,7 @@ if percentage >= 5:
 # Instead of printing ("Get News"), actually get the first 3 news pieces for the COMPANY_NAME.
 
 
-    NEWS_API_KEY = "a561125ea5fa4e40bde8f3e82c53ab41"
+    NEWS_API_KEY = "use your own api key"
 
     parameters_news = {
         "apiKey": NEWS_API_KEY,
@@ -63,15 +63,15 @@ if percentage >= 5:
 ## STEP 3: Use https://www.twilio.com
 # Send a seperate message with the percentage change and each article's title and description to your phone number.
 
-    account_sid = "ACc1d870b8f229af655414c18645ac5bb9"
-    auth_token = "e0cd2186fb8d64a87ee4157dc1ac9661"
+    account_sid = "use your own sid"
+    auth_token = "use your own token"
     client = Client(account_sid, auth_token)
 
     message = client.messages \
                     .create(
                          body=message,
-                         from_='+19702999411',
-                         to='+4915736589485'
+                         from_='set your twilio number',
+                         to='set your own number'
                      )
 
     print(message.sid)
