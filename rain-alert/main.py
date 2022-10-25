@@ -1,10 +1,12 @@
+import os
+
 import requests
 from twilio.rest import Client
 
 parameters = {
     "lat": 52.519665,
     "lon": 13.506570,
-    "appid": "3497a602bcd90a3720da0a09da549a5a",
+    "appid": os.environ.get("OWN_API_KEY"),
     "exclude": "current,minutely,daily"
 }
 response = requests.get(url="https://api.openweathermap.org/data/2.5/weather", params=parameters)
@@ -19,8 +21,8 @@ for hour in range(12):
 
 # Find your Account SID and Auth Token at twilio.com/console
 # and set the environment variables. See http://twil.io/secure
-account_sid = "put your id here"
-auth_token = "put your auth code here"
+account_sid = os.environ.get("TWILIO_ACC_SID")
+auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
 message = client.messages \
