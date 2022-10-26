@@ -1,8 +1,8 @@
 import requests
 from datetime import datetime
 
-APP_ID = "3249ddc5"
-API_KEY = "4541fbf818fa8876e379b17a7295a843"
+APP_ID = "use your own app id"
+API_KEY = "use your own api key"
 
 header = {
     "x-app-id": APP_ID,
@@ -29,7 +29,7 @@ for data in result:
 
     sheety_url = "https://api.sheety.co/e491fef3eb4d5e6ed8d5ef0a0905f6c5/workoutTracking/workouts"
     sheety_token = {
-        "Authorization": "Bearer jkhkjghjkhngdsvjhbasdf"
+        "Authorization": "Bearer use your own bearer"
     }
 
     workout = {
