@@ -1,8 +1,9 @@
 import requests
+import os
 from datetime import datetime
 
-APP_ID = "use your own app id"
-API_KEY = "use your own api key"
+APP_ID = "3249ddc5"
+API_KEY = os.environ.get("API_KEY")
 
 header = {
     "x-app-id": APP_ID,
@@ -23,13 +24,14 @@ response = requests.post(url="https://trackapi.nutritionix.com/v2/natural/exerci
               headers=header,
               json=exercise_data
               )
+
 result = response.json()["exercises"]
 
 for data in result:
 
     sheety_url = "https://api.sheety.co/e491fef3eb4d5e6ed8d5ef0a0905f6c5/workoutTracking/workouts"
     sheety_token = {
-        "Authorization": "Bearer use your own bearer"
+        "Authorization": "Bearer jkhkjghjkhngdsvjhbasdf"
     }
 
     workout = {
@@ -43,4 +45,5 @@ for data in result:
     }
 
     sheet_response = requests.post(url=sheety_url, json=workout, headers=sheety_token)
+    sheet_response.raise_for_status()
     print(sheet_response.text)
