@@ -1,0 +1,16 @@
+h1 {
+    color: red;
+    font-size: 200px;
+}
+
+img {
+    background-color: yellow;
+}
+
+.bacon {
+    background-color: red;
+}
+
+.vegan-bacon {
+    background-color: green;
+}

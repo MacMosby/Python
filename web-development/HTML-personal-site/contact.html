@@ -6,11 +6,26 @@
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Contact Me</title>
+        <link rel="stylesheet" href="css/styles.css">
     </head>
     <body>
         <h1>Contact Me</h1>
         <p>Address: Berlin</p>
         <p>Mail: <a href="mailto:marcrodenbusch@gmail.com">marcrodenbusch@gmail.com</a></p>
-
+        <hr>
+        <form action="mailto:marcrodenbusch@gmail.com" method="post" enctype="text/plain">
+            <label>Your Name:</label>
+            <input type="text" name="yourName">
+            <br>
+            <label>Your Email:</label>
+            <input type="email" name="yourEmail">
+            <br>
+            <label>Your Message:</label>
+            <br>
+            <textarea name="yourMessage" rows="10" cols="30"></textarea>
+            <br>
+            <input type="submit" value="Hello" formtarget="_blank">
+        </form>
+        <a href="index.html">Home</a>
     </body>
 </html>
