@@ -20,11 +20,3 @@ for title_tag in song_titles:
 
 
 #--------------------------SPOTIFY API----------------------------------
-
-SF_CLIENT_ID = "82ab51ebb0f74bdcae547fe3c817deb9"
-SF_CLIENT_SECRET = "f85f125fdad6482d937d095e5ead4294"
-
-
-
-birdy_uri = 'spotify:artist:2WX2uTcsvV5OnS0inACecP'
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
