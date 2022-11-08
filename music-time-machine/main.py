@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import spotipy
-from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 
 date = input("Which year do you want to travel to? Type the date in this format YYYY-MM-DD: ")
 
@@ -18,5 +18,14 @@ for title_tag in song_titles:
     print(title.text.strip())
 
 
+# --------------------------SPOTIFY API----------------------------------
 
-#--------------------------SPOTIFY API----------------------------------
+auth_manager = SpotifyOAuth(
+    client_id="use your client id",
+    client_secret="use your client secret",
+    redirect_uri="http://example.com",
+    )
+
+sp = spotipy.Spotify(auth_manager=auth_manager)
+
+user_id = sp.current_user()["id"]
