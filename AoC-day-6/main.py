@@ -1,8 +1,9 @@
 with open("data.txt") as file:
     buffer = file.read()
     print(buffer)
+
 count = 0
-marker_found = False
+
 for n in range(len(buffer) - 13):
     sequence = buffer[0 + n:14 + n]
 
