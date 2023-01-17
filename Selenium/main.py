@@ -11,4 +11,11 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 driver.get("https://amazon.com")
 
+# Main action here
+
+
+
+
+
+
 driver.close()
