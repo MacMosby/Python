@@ -14,41 +14,43 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 
 driver.get("https://orteil.dashnet.org/experiments/cookie/")
 cookie = driver.find_element(By.ID, "cookie")
-cursor = driver.find_element(By.ID, "buyCursor")
-grandma = driver.find_element(By.ID, "buyGrandma")
-factory = driver.find_element(By.ID, "buyFactory")
-mine = driver.find_element(By.ID, "buyMine")
-shipment = driver.find_element(By.ID, "buyShipment")
-alchemy_lab = driver.find_element(By.ID, "buyAlchemy lab")
-portal = driver.find_element(By.ID, "buyPortal")
-time_machine = driver.find_element(By.ID, "buyTime machine")
+# cursor = driver.find_element(By.ID, "buyCursor")
+# grandma = driver.find_element(By.ID, "buyGrandma")
+# factory = driver.find_element(By.ID, "buyFactory")
+# mine = driver.find_element(By.ID, "buyMine")
+# shipment = driver.find_element(By.ID, "buyShipment")
+# alchemy_lab = driver.find_element(By.ID, "buyAlchemy lab")
+# portal = driver.find_element(By.ID, "buyPortal")
+# time_machine = driver.find_element(By.ID, "buyTime machine")
 
-while True:
-    for _ in range(1000):
-        cookie.click()
-    if time_machine.get_attribute("class") != "grayed":
-        time_machine.click()
-    else:
-        if portal.get_attribute("class") != "grayed":
-            portal.click()
-        else:
-            if alchemy_lab.get_attribute("class") != "grayed":
-                alchemy_lab.click()
-            else:
-                if shipment.get_attribute("class") != "grayed":
-                    shipment.click()
-                else:
-                    if mine.get_attribute("class") != "grayed":
-                        mine.click()
-                    else:
-                        if factory.get_attribute("class") != "grayed":
-                            factory.click()
-                        else:
-                            if grandma.get_attribute("class") != "grayed":
-                                grandma.click()
-                            else:
-                                if cursor.get_attribute("class") != "grayed":
-                                    cursor.click()
-    time.sleep(5)
+timeout = time.time() + 5
+five_min = time.time() + 60*5
 
+running = True
 
+while running:
+    cookie.click()
+
+    if time.time() > timeout:
+
+        # Get money count
+        cookie_count = int(driver.find_element(By.ID, "money").text.replace(",", ""))
+
+        buttons = driver.find_elements(By.CSS_SELECTOR, "#store div")
+        for button in reversed(buttons):
+            element = button.text.split("-")
+            if len(element) > 1:
+                num = element[1].split("\n")[0].strip()
+                cost = num.replace(",", "")
+                if cookie_count > int(cost):
+                    button.click()
+                    break
+
+        # Set time for next timeout
+        timeout = time.time() + 5
+
+    if time.time() > five_min:
+        print(driver.find_element(By.ID, "cps").text)
+        running = False
+
+driver.quit()
