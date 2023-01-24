@@ -15,10 +15,9 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 driver.get("https://www.tinder.com")
 # driver.maximize_window()
 
+time.sleep(10)
 
-time.sleep(3)
-
-log_in_button = driver.find_element(By.CLASS_NAME, "c9iqosj")
+log_in_button = driver.find_element(By.LINK_TEXT, "Log in")
 log_in_button.click()
 
 time.sleep(5)
